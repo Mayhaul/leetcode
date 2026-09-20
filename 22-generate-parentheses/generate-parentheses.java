@@ -1,15 +1,20 @@
 class Solution {
-    public void helper(int n, StringBuilder str, List<String> ans) {
+    public void helper(int n, int open, int close, StringBuilder str, List<String> ans) {
         if (str.length() == 2 * n) {
             if (validate(str)) {
                 ans.add(str.toString());
             }
             return;
         }
-        helper(n, str.append('('), ans);
-        str.deleteCharAt(str.length() - 1);
-        helper(n, str.append(')'), ans);
-        str.deleteCharAt(str.length() - 1);
+        if (open < n) {
+            helper(n, open + 1, close, str.append('('), ans);
+            str.deleteCharAt(str.length() - 1);
+        }
+        if (close < open) {
+            helper(n, open, close + 1, str.append(')'), ans);
+            str.deleteCharAt(str.length() - 1);
+        }
+
     }
 
     public boolean validate(StringBuilder str) {
@@ -45,7 +50,7 @@ class Solution {
         List<String> ans = new ArrayList<>();
         StringBuilder str = new StringBuilder();
 
-        helper(n, str, ans);
+        helper(n, 0, 0, str, ans);
 
         return ans;
     }
