@@ -11,14 +11,12 @@ class Solution {
             }
         );
 
-        // Insert all points
         for(int[] point : points) {
             pq.offer(point);
         }
 
         int[][] ans = new int[k][2];
 
-        // Extract K closest points
         for(int i = 0; i < k; i++) {
             ans[i] = pq.poll();
         }
