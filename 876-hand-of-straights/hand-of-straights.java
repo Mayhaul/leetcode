@@ -19,7 +19,7 @@ class Solution {
             int prev = pq.poll();
             int x = 1;
             while(x < groupSize){
-                
+
                 if(pq.isEmpty())
                     return false;
 
@@ -40,56 +40,3 @@ class Solution {
         return true;
     }
 }
-
-
-
-// class Solution {
-//     public boolean isNStraightHand(int[] hand, int groupSize) {
-
-//         if (hand.length % groupSize != 0) {
-//             return false;
-//         }
-
-//         PriorityQueue<Integer> pq = new PriorityQueue<>();
-
-//         for (int num : hand) {
-//             pq.offer(num);
-//         }
-
-//         while (!pq.isEmpty()) {
-
-//             int prev = -1;
-//             int count = 0;
-
-//             ArrayList<Integer> temp = new ArrayList<>();
-
-//             while (count < groupSize) {
-
-//                 if (pq.isEmpty()) {
-//                     return false;
-//                 }
-
-//                 int curr = pq.poll();
-
-//                 if (curr == prev) {
-//                     temp.add(curr);
-//                     continue;
-//                 }
-
-//                 if (prev != -1 && curr != prev + 1) {
-//                     return false;
-//                 }
-
-//                 prev = curr;
-//                 count++;
-//             }
-
-//             // Restore duplicates for subsequent groups
-//             for (int num : temp) {
-//                 pq.offer(num);
-//             }
-//         }
-
-//         return true;
-//     }
-// }
